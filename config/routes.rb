@@ -1,6 +1,8 @@
 Bridgetroll::Application.routes.draw do
   resources :locations
 
+  resources :add_date_to_events
+
   devise_for :users
 
   resources :events

@@ -1,0 +1,23 @@
+<h1>Listing add_date_to_events</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @add_date_to_events.each do |add_date_to_event| %>
+  <tr>
+    <td><%= add_date_to_event.date %></td>
+    <td><%= link_to 'Show', add_date_to_event %></td>
+    <td><%= link_to 'Edit', edit_add_date_to_event_path(add_date_to_event) %></td>
+    <td><%= link_to 'Destroy', add_date_to_event, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Add date to event', new_add_date_to_event_path %>

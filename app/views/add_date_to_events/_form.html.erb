@@ -1,0 +1,21 @@
+<%= form_for(@add_date_to_event) do |f| %>
+  <% if @add_date_to_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@add_date_to_event.errors.count, "error") %> prohibited this add_date_to_event from being saved:</h2>
+
+      <ul>
+      <% @add_date_to_event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
