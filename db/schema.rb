@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(:version => 20120125043718) do
 
+  create_table "add_date_to_events", :force => true do |t|
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "created_at"

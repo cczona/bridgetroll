@@ -6,11 +6,34 @@ describe "existing user", :js => true do
     @user = Factory(:user)
     @user.confirm!
 
-    @event = Factory(:event)
+    # @event = Factory(:event)
     
   end
 
+  it 'should see be able to sign-IN from home page' do
+    visit '/'
+    page.should have_link("Sign In")
+  end
+  
+  it 'should be able to sign-IN from the sign-IN page' do
+    visit new_user_session_path
+
+    fill_in "Email", :with => @user.email
+    fill_in "Password", :with => @user.password
+    click_button "Sign in"
+    page.should have_content("Signed in successfully") 
+    page.should have_link("Logout")
+     
+  end
+  
+  it 'should show sign-OUT link on home page when user is logged in' do
+    visit '/'
+    click_link("Sign In")
+    current_path.should == new_user_session_path
+  end
+
   it "should signin and edit his/her settings" do
+    pending
     visit new_user_session_path
 
     fill_in "Email", :with => @user.email
