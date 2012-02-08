@@ -14,19 +14,26 @@ describe "existing user", :js => true do
     visit '/'
     page.should have_link("Sign In")
   end
-  
-  it 'should be able to sign-IN from the sign-IN page' do
+
+  it "should see be able to sign in from the home page" do
+    visit '/'
+    click_link("Sign In")
+    current_path.should == new_user_session_path
+  end
+
+  it "should be able to sign-IN from the sign-IN page" do
     visit new_user_session_path
 
     fill_in "Email", :with => @user.email
     fill_in "Password", :with => @user.password
     click_button "Sign in"
-    page.should have_content("Signed in successfully") 
-    page.should have_link("Logout")
-     
+
+    page.should have_content("Signed in successfully")
+    page.should have_link("Sign Out")
   end
   
   it 'should show sign-OUT link on home page when user is logged in' do
+    pending
     visit '/'
     click_link("Sign In")
     current_path.should == new_user_session_path
